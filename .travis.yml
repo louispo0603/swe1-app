@@ -4,3 +4,17 @@ python:
 
 install:
   - pip install -r requirements.txt
+
+before_script:
+  - python manage.py migrate
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: "Encrypted <access-key-id> = 123"
+  secret_access_key:
+    secure: "Encrypted <secret-access-key> = 234"
+  region: "us-east-1"
+  app: "swe1-app"
+  env: "swe1-app-dev"
+  bucket_name: "the-target-S3-bucket"
