@@ -8,12 +8,17 @@ install:
 before_script:
   - python manage.py migrate
 
+script:
+  - black --check .
+  - flake8 .
+  - coverage run manage.py test
+
 deploy:
   provider: elasticbeanstalk
   access_key_id:
-    secure: "Encrypted <access-key-id> = 123"
+    secure: "abdsdsvdsvds"
   secret_access_key:
-    secure: "Encrypted <secret-access-key> = 234"
+    secure: "fdsfsdijojo"
   region: "us-east-1"
   app: "swe1-app"
   env: "swe1-app-dev"
