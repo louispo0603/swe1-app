@@ -1,4 +1,6 @@
 asgiref==3.7.2
+black==23.10.0
+coverage==7.3.2
 django==4.2.6
 django-crispy-forms==1.14.0
 django-tables2==2.4.1

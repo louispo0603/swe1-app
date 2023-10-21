@@ -16,7 +16,7 @@ script:
 deploy:
   provider: elasticbeanstalk
   access_key_id:
-    secure: "abdsdsvdsvds"
+    secure: "encrypted <aws-access-key-id>="
   secret_access_key:
     secure: "fdsfsdijojo"
   region: "us-east-1"
