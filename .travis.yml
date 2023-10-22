@@ -1,10 +1,13 @@
 language: python
+
 python:
   - 3.8
 
 install:
   - pip install -r requirements.txt
 
+before_script:
+  - python manage.py migrate
 
 script:
   - black --check .
@@ -18,3 +21,6 @@ deploy:
   region: "us-east-1"
   app: "swe1-app"
   env: "swe1-app-dev"
+
+after_success:
+  - curl -L https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-windows.exe -o coveralls.exe
