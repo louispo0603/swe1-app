@@ -15,9 +15,8 @@ script:
 
 deploy:
   provider: elasticbeanstalk
-  access_key_id: $aws-access-key-id
+  access_key_id: $aws_access_key_id
   secret_access_key: $aws_secret_access_key
   region: "us-east-1"
   app: "swe1-app"
   env: "swe1-app-dev"
-  bucket_name: "the-target-S3-bucket"
