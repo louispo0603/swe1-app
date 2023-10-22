@@ -8,9 +8,18 @@ python:
 services:
   - postgresql
 
+addons:
+  # Use a different PostgreSQL version than the default:
+  postgresql: 13
+  apt:
+    update: true
+    packages:
+      - postgresql-13
+      - postgresql-13-postgis-3
+
 env:
   global:
-    - PGPORT = 5433
+    - PGPORT=5433
   jobs:
     - NODE_ENV=test DB_PORT=5433 DB_USERNAME=postgres
 
