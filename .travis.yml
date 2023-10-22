@@ -1,4 +1,4 @@
-os: linux
+os: windows
 dist: jammy
 language: python
 
