@@ -13,9 +13,10 @@ install:
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgre
+  - python manage.py migrate
+
 
 script:
-  - python manage.py migrate
   - black --check .
   - flake8 .
   - coverage run manage.py test
