@@ -5,34 +5,37 @@ language: python
 python:
   - 3.8
 
+env:
+  - HOST_URL="localhost"
+cache:
+  directories:
+    - $HOME/path/to/local
 services:
   - postgresql
-
 addons:
-  # Use a different PostgreSQL version than the default:
+  postgresql: 13
   apt:
-    update: true
     packages:
-      - postgresql-13
-      - postgresql-13-postgis-3
-
+    - postgresql-13
+    - postgresql-client-13
+    - libpq-dev
+    - build-essential
+    - libssl-dev
+    - zlib1g-dev
+    - clang-tidy
 env:
   global:
     - PGPORT=5433
-  jobs:
-    - NODE_ENV=test DB_PORT=5433 DB_USERNAME=postgres
-
 before_install:
-  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
-  - sudo service postgresql restart
-  - sleep 1
-  - postgres --version
+  - wget http://mirrors.kernel.org/ubuntu/pool/universe/a/astyle/astyle_3.1-1ubuntu2_amd64.deb
+  - sudo dpkg -i astyle_3.1-1ubuntu2_amd64.deb
+  - sudo chmod -R 777 /var/log/
 
 install:
   - pip install -r requirements.txt
 
 before_script:
-  - psql -p 5433 -U postgres -c 'create database my-app;'
+  - psql -c 'create database travis_ci_test;' -U postgres
   - python manage.py migrate
 
 script:
