@@ -7,6 +7,8 @@ python:
 
 env:
   - HOST_URL="localhost"
+  global:
+    - PGPORT=5433
 cache:
   directories:
     - $HOME/path/to/local
@@ -23,9 +25,7 @@ addons:
     - libssl-dev
     - zlib1g-dev
     - clang-tidy
-env:
-  global:
-    - PGPORT=5433
+
 before_install:
   - wget http://mirrors.kernel.org/ubuntu/pool/universe/a/astyle/astyle_3.1-1ubuntu2_amd64.deb
   - sudo dpkg -i astyle_3.1-1ubuntu2_amd64.deb
@@ -35,7 +35,7 @@ install:
   - pip install -r requirements.txt
 
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -p 5433 -c 'create database travis_ci_test;' -U postgres
   - python manage.py migrate
 
 script:
