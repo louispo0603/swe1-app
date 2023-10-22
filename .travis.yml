@@ -10,7 +10,8 @@ install:
   - pip install -r requirements.txt
 
 before_script:
-  - python manage.py makemigrations
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
   - python manage.py migrate
 
 script:
