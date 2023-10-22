@@ -100,7 +100,7 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": "django-polls",
+            "NAME": "djangopolls",
             "USER": "postgres",
             "PASSWORD": "password1126",
             "HOST": "localhost",
