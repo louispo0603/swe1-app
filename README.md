@@ -1,2 +1,4 @@
 # swe1-app
-Django poll application project
+
+
+https://app.travis-ci.com/louispo0603/swe1-app.svg?branch=main
