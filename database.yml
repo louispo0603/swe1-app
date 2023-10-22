@@ -1,3 +1,7 @@
 test:
   adapter: postgresql
-  database: travis_ci_test
+  database: django-polls
+  USER: postgres
+  PASSWORD": password1126
+  HOST: localhost"
+  PORT: 5432
