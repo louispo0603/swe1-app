@@ -11,7 +11,6 @@ install:
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
   - python manage.py migrate
 
 script:
@@ -26,6 +25,9 @@ deploy:
   region: "us-east-1"
   app: "swe1-app"
   env: "swe1-app-dev"
+  on:
+    repo: louispo0603/swe1-app
+    branch: main
 
 after_success:
   - curl -L https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-windows.exe -o coveralls.exe
