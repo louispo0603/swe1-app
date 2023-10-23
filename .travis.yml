@@ -46,5 +46,5 @@ deploy:
     repo: louispo0603/swe1-app
     branch: main
 
-after_success:
-  - curl -L https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-windows.exe -o coveralls.exe
+after_script:
+  - coveralls
