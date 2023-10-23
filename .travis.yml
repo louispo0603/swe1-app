@@ -42,7 +42,7 @@ deploy:
   region: "us-east-1"
   app: "swe1-app"
   env: "swe1-app-dev"
-  bucket_name: "djangopollslp"
+  bucket_name: $bucket_name
   on:
     repo: louispo0603/swe1-app
     branch: main
